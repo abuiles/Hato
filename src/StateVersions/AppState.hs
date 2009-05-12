@@ -91,29 +91,7 @@ setTaskDesc tid nd = setTaskField tid (set_taskDescr nd)
 deleteTask :: Integer -> Update AppState ()
 deleteTask tid = modify (\s@(AppState ds _) -> s{ appdatastore = (M.delete tid ds) })
             
- 
---Boiler plate version                  
-{- 
--- If the task doesn't exist in the "db" it leave AppState with the old state
--- the result is True if changes were done or False.
-setTaskStatus ::Integer -> Bool ->  Update AppState Bool
-setTaskStatus tid ns =do
-  (AppState old) <- get
-  case  (adjustTask tid (set_taskStatus ns) old) of
-    [] -> return False
-    xs -> do
-      put (AppState xs)
-      return True
-
-setTaskDesc :: Integer -> B.ByteString -> Update AppState Bool
-setTaskDesc tid nd = do
-  (AppState old) <- get
-  case  (adjustTask tid ((set_taskDescr nd)) old) of
-    [] -> return False
-    xs -> do
-      put (AppState xs)
-      return True
--}  
+  
                       
  
 --Tests helper
@@ -128,13 +106,3 @@ showTa = fmap (M.showTree.appdatastore) ask
 
 $(mkMethods ''AppState ['showTa,'addTask,'askTask,'askTaskTracker,'askTasks,'askTasksByStatus,'deleteTask,'incrTaskTracker,'newTask ,'setTaskDesc,'setTaskStatus ])                
 
-
-rootState :: Proxy AppState
-rootState = Proxy
-
-start = startSystemState rootState
-
-
-{-
-[Task {tId = 9, tDescr = "Install Archie!", tStatus = False},Task {tId = 1, tDescr = "It wokds!", tStatus = True},Task {tId = 2, tDescr = "bbbbb", tStatus = False},Task {tId = 3, tDescr = "ccccc", tStatus = False}]
--}
