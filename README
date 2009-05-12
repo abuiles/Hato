@@ -5,7 +5,7 @@ Install:
  In your command line
 
  1- git clone git://github.com/abuiles/Hato.git
- 2- cd hato
+ 2- cd Hato
  3- cabal install
  4- hato
      
