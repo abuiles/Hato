@@ -1,0 +1,16 @@
+Simple Happstack Tasks Manager
+
+Install:
+
+ In your command line
+
+ 1- git clone git://github.com/abuiles/Hato.git
+ 2- cd hato
+ 3- cabal install
+ 4- hato
+     
+That's all hato is running:
+
+http://localhost:8080/tasks/todo    
+
+more info in hato.cabal.
