@@ -1,0 +1,38 @@
+Name: hato
+Version: 0.1
+Synopsis:To-Do manager written with Happstack.
+Description: Very simple Happstack application to keep track of To-Do activities.
+
+Author: Adolfo Builes
+Maintainer: Adolfo Builes (builes.adolfo at gmail dot com)
+
+Build-type: Simple
+
+Extra-Source-Files:
+	templates/*.st
+	src/*.hs
+	src/StateVersions/*.hs
+	
+Cabal-Version: >=1.6
+
+-- lifted from happstck-tutorial
+Flag base4
+    Description: Choose the even newer, even smaller, split-up base package.
+
+Executable hato
+    Main-is:             Main.hs
+    hs-source-dirs:
+        src
+    Other-Modules:
+        StateVersions.AppState        
+        ControllerGetActions
+        Controller        
+        ControllerPostActions
+        FromDataInstances             
+        View
+    ghc-options: -Wall
+    Build-Depends:   base, HStringTemplate, HStringTemplateHelpers, mtl, bytestring,
+                     happstack, containers, HTTP, safe,happstack-helpers, DebugTraceHelpers,
+                     happstack-server, happstack-data, happstack-ixset, happstack-state
+    if flag(base4)
+      Build-Depends: base >=4 && <5, syb
