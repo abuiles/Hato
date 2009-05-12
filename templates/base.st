@@ -24,9 +24,6 @@
         New Task  : </br>
 	<input type="text" name="newTaskField"/> 
 	<input type="submit" value="Add" />
-     </form>
-     <address>
-      <a href="mailto:builes.adolfo@gmail.com">Adolfo Builes</a>
-    </address>
+     </form>     
   </body>
 </html>
